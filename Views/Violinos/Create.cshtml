@@ -1,6 +1,6 @@
-@model RpgMvc.Models.PersonagemViewModel
+@model PersonalMVC.Models.ViolinoViewModel
 @{
-    ViewBag.Title = "Novo Personagem";
+    ViewBag.Title = "Novo Violino";
 }
 
 @if (@TempData["Mensagem"] != null)
@@ -15,7 +15,7 @@
         @TempData["MensagemErro"]</div>
 }
 
-<h2>Criar um Novo Personagem</h2>
+<h2>Criar um novo Violino</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -23,56 +23,65 @@
         <hr />
 
 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-
-         <div class="form-group">
-            @Html.LabelFor(model => model.Classe, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                
-                @Html.DropDownListFor(model => model.Classe , Html.GetEnumSelectList(typeof(RpgMvc.Models.Enuns.ClasseEnum)), 
-                    "---Selecione---", new { @class = "form-control" })
-            
-            </div>
-        </div>  
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PontosVida, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.PontosVida, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Forca, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Forca, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Inteligencia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Inteligencia, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Defesa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Defesa, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <br/>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-6">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </div>
+   <div class="form-group">
+    @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
     </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Modelo, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Materiais, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.Materiais, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.UsuarioId, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.EditorFor(model => model.UsuarioId, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+</div>
+
+</div>
+
+<br/>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+        <input type="submit" value="Salvar" class="btn btn-primary" />
+    </div>
+</div>
+
 }
 <div>
     @Html.ActionLink("Retornar", "Index")

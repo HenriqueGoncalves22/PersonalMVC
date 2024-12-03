@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace PersonalMVC.Controllers;
 
-public class ViolinoController : Controller
+public class ViolinosController : Controller
 {
     public string uriBase = "http://rique.somee.com/PersonalApi/Violinos/";
     public IActionResult Index()
@@ -36,8 +36,8 @@ public class ViolinoController : Controller
             string uriComplementar = "GetAll";
 
             HttpClient httpClient = new HttpClient();
-            //string token = HttpContext.Session.GetString("SessionTokenUsuario");
-            //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            string token = HttpContext.Session.GetString("SessionTokenUsuario");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
             string serialized = await response.Content.ReadAsStringAsync();
@@ -89,14 +89,14 @@ public class ViolinoController : Controller
         }
 
     }
-
+/* 
     [HttpGet]
     public ActionResult Create()
     {
         return View();
     }
 
-    [HttpGet]
+   [HttpGet]
     public async Task<ActionResult> DetailsAsync(int? id)
     {
         try
@@ -121,7 +121,7 @@ public class ViolinoController : Controller
             TempData["MensagemErro"] = ex.Message;
             return RedirectToAction("Index");
         }
-    }
+    }*/
     
 }
 
