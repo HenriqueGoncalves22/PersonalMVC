@@ -17,6 +17,6 @@ namespace PersonalMVC.Models
         public double Valor { get; set; }
         public TipoAcessoriosEnum TipoAcessorios { get; set; }
         public int? ViolinoId { get; set; }
-        public ViolinoViewModel? Violino { get; set; }
+       // public ViolinoViewModel? Violino { get; set; }
     }
 }
