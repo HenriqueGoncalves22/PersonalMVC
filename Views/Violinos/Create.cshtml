@@ -22,14 +22,6 @@
     <div class="form-horizontal">
         <hr />
 
-
-   <div class="form-group">
-    @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-6">
-        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
-    </div>
-</div>
-
 <div class="form-group">
     @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-6">
@@ -62,13 +54,6 @@
     @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-6">
         @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
-    </div>
-</div>
-
-<div class="form-group">
-    @Html.LabelFor(model => model.UsuarioId, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-6">
-        @Html.EditorFor(model => model.UsuarioId, new { htmlAttributes = new { @class = "form-control" } })
     </div>
 </div>
 

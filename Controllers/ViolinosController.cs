@@ -36,8 +36,8 @@ public class ViolinosController : Controller
             string uriComplementar = "GetAll";
 
             HttpClient httpClient = new HttpClient();
-            string token = HttpContext.Session.GetString("SessionTokenUsuario");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+           // string token = HttpContext.Session.GetString("SessionTokenUsuario");
+           // httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
             string serialized = await response.Content.ReadAsStringAsync();
@@ -89,7 +89,7 @@ public class ViolinosController : Controller
         }
 
     }
-/* 
+
     [HttpGet]
     public ActionResult Create()
     {
@@ -104,7 +104,7 @@ public class ViolinosController : Controller
             HttpClient httpClient = new HttpClient();
             string token = HttpContext.Session.GetString("SessionTokenUsuario");
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            HttpResponseMessage response = await httpClient.PostAsync(uriBase + id.ToString());
+            HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
             string serialized = await response.Content.ReadAsStringAsync();
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -121,7 +121,65 @@ public class ViolinosController : Controller
             TempData["MensagemErro"] = ex.Message;
             return RedirectToAction("Index");
         }
-    }*/
+    }
+    [HttpPost]
+    public async Task<ActionResult> EditAsync(ViolinoViewModel v)
+    {
+        try
+        {
+            HttpClient httpClient = new HttpClient();
+            string token = HttpContext.Session.GetString("SessionTokenUsuario");
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var content = new StringContent(JsonConvert.SerializeObject(v));
+            content.Headers.ContentType = new MediaTypeHeaderValue("aplication/json");
+
+            HttpResponseMessage response = await httpClient.PutAsync(uriBase, content);
+            string serialized = await response.Content.ReadAsStringAsync();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                TempData["Mensagem"] =
+                    string.Format("Violino da Marca {0}, Modelo {1} atualizado com sucesso!", v.Marca, v.Modelo);
+                
+                return RedirectToAction("Index");
+            }
+            else
+                throw new System.Exception(serialized);
+        }
+        catch (System.Exception ex)
+        {
+            TempData["MensagemErro"] = ex.Message;
+            return RedirectToAction("Index");
+        }
+    }
+
+    [HttpGet]
+    public async Task<ActionResult> DeleteAsync (int id)
+    {
+        try
+        {
+            HttpClient httpClient = new HttpClient();
+            string token = HttpContext.Session.GetString("SessionTokenUsuario");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            HttpResponseMessage response = await httpClient.DeleteAsync(uriBase + id.ToString());
+            string serialized = await response.Content.ReadAsStringAsync();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                TempData["Mensagem"] = string.Format("Violino {0} removido com sucesso!", id);
+                return RedirectToAction("Index");
+            }
+            else
+                throw new System.Exception(serialized);
+        }
+        catch (System.Exception ex)
+        {
+            TempData["MensagemErro"] = ex.Message;
+            return RedirectToAction("Index");
+        }
+    }
     
 }
 
