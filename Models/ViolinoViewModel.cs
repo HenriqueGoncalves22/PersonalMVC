@@ -18,6 +18,6 @@ namespace PersonalMVC.Models
         public double Valor { get; set; }
         public int? UsuarioId { get; set; }
         //public UsuarioViewModel? Usuario { get; set; }
-       // public List<AcessorioViewModel> Acessorios { get; set; } = [];
+        public List<AcessorioViewModel> Acessorios { get; set; } = [];
     }
 }
