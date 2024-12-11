@@ -12,7 +12,7 @@
     <tr><!--Títulos das colunas da tabela-->
         <th>@Html.DisplayNameFor(model => model.Marca)</th>
         <th>@Html.DisplayNameFor(model => model.Modelo)</th>
-        <th>@Html.DisplayNameFor(model => model.Materiais)</th>
+        <th>@Html.DisplayNameFor(model => model.Descricao)</th>
         <th>@Html.DisplayNameFor(model => model.Valor)</th>
     </tr>
     <!--Looping para escrever os dados na tabela-->
@@ -21,7 +21,7 @@
         <tr>
                 <td>@Html.DisplayFor(modelItem => item.Marca)</td>
                 <td>@Html.DisplayFor(modelItem => item.Modelo)</td>
-                <td>@Html.DisplayFor(modelItem => item.Materiais)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
                 <td>@Html.DisplayFor(modelItem => item.Valor)</td>
               <td><!--Coluna para Links/botões-->
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |

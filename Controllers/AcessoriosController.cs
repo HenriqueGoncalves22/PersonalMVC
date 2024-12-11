@@ -10,7 +10,7 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
 namespace PersonalMVC.Controllers;
 
@@ -28,7 +28,7 @@ public class AcessoriosController : Controller
         return View("Error!");
     }
 
-       [HttpGet]
+    [HttpGet]
     public async Task<ActionResult> IndexAsync()
     {
         try
@@ -100,8 +100,8 @@ public class AcessoriosController : Controller
         try
         {
             HttpClient httpClient = new HttpClient();
-            string token = HttpContext.Session.GetString("SessionTokenUsuario");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+           // string token = HttpContext.Session.GetString("SessionTokenUsuario");
+           // httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
             string serialized = await response.Content.ReadAsStringAsync();
 
@@ -127,8 +127,8 @@ public class AcessoriosController : Controller
         try
         {
             HttpClient httpClient = new HttpClient();
-            string token = HttpContext.Session.GetString("SessionTokenUsuario");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+           // string token = HttpContext.Session.GetString("SessionTokenUsuario");
+           // httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
             string serialized = await response.Content.ReadAsStringAsync();
 
@@ -154,13 +154,11 @@ public class AcessoriosController : Controller
         try
         {
             HttpClient httpClient = new HttpClient();
-            string token = HttpContext.Session.GetString("SessionTokenUsuario");
+          //  string token = HttpContext.Session.GetString("SessionTokenUsuario");
+          //  httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var content = new StringContent(JsonConvert.SerializeObject(a));
             content.Headers.ContentType = new MediaTypeHeaderValue("aplication/json");
-
-
             HttpResponseMessage response = await httpClient.PutAsync(uriBase, content);
             string serialized = await response.Content.ReadAsStringAsync();
 

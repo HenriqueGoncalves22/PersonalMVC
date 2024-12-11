@@ -1,0 +1,31 @@
+@model PersonalMVC.Models.AcessorioViewModel
+@{
+    ViewBag.Title = "Detalhes do Acessorio";
+}
+<h2>Detalhes do Acessorio</h2>
+<div>
+    <hr />
+    <dl class = "dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Id)</dt>
+        <dd>@Html.DisplayFor(model => model.Id)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+        <dd>@Html.DisplayFor(model => model.Nome)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Marca)</dt>
+        <dd>@Html.DisplayFor(model => model.Marca)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Modelo)</dt>
+        <dd>@Html.DisplayFor(model => model.Modelo)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Materiais)</dt>
+        <dd>@Html.DisplayFor(model => model.Materiais)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Descricao)</dt>
+        <dd>@Html.DisplayFor(model => model.Descricao)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id})
+    @Html.ActionLink("Retornar", "Index")
+</p>

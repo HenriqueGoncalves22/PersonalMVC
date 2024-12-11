@@ -156,12 +156,10 @@ public class ViolinosController : Controller
         {
             HttpClient httpClient = new HttpClient();
            // string token = HttpContext.Session.GetString("SessionTokenUsuario");
-
            // httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var content = new StringContent(JsonConvert.SerializeObject(v));
             content.Headers.ContentType = new MediaTypeHeaderValue("aplication/json");
-
-
             HttpResponseMessage response = await httpClient.PutAsync(uriBase, content);
             string serialized = await response.Content.ReadAsStringAsync();
 
@@ -169,7 +167,6 @@ public class ViolinosController : Controller
             {
                 TempData["Mensagem"] =
                     string.Format("Violino da {0}, modelo {1} atualizado com sucesso!", v.Marca, v.Modelo);
-                
                 return RedirectToAction("Index");
             }
             else
